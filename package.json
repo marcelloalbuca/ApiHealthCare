@@ -1,0 +1,19 @@
+{
+  "name": "api-healthcare",
+  "version": "1.0.0",
+  "description": "Api para app",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/marcelloalbuca/ApiHealthCare.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/marcelloalbuca/ApiHealthCare/issues"
+  },
+  "homepage": "https://github.com/marcelloalbuca/ApiHealthCare#readme"
+}
