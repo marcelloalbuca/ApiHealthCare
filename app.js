@@ -3,10 +3,8 @@ const app = express();
 const mongoose = require('mongoose');
 const config = require('./config/config');
 const indexRoute = require('./routes/index');
-
-
-
-
+const usersRoute = require('./routes/UsuarioRoutes');
+const bodyParser = require('body-parser');
 
 const url = config.bd_string;
 const options = { reconnectTries: Number.MAX_VALUE, reconnectInterval: 500, poolSize: 5, useNewUrlParser: true };
@@ -26,12 +24,14 @@ mongoose.connection.on('connected', () => {
     console.log('Aplicação conectada ao banco de dados!');
 })
 
+//BODY PARSER
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 
+app.use('/usuario', usersRoute);
 app.use('/', indexRoute);
 
-app.listen(3001);
-
-
+app.listen(3000);
 
 
 
