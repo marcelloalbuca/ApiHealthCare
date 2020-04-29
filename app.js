@@ -2,6 +2,11 @@ const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
 const config = require('./config/config');
+const indexRoute = require('./routes/index');
+
+
+
+
 
 const url = config.bd_string;
 const options = { reconnectTries: Number.MAX_VALUE, reconnectInterval: 500, poolSize: 5, useNewUrlParser: true };
@@ -22,6 +27,12 @@ mongoose.connection.on('connected', () => {
 })
 
 
-app.listen(3000);
+app.use('/', indexRoute);
+
+app.listen(3001);
+
+
+
+
 
 module.exports = app;
