@@ -13,6 +13,17 @@ router.get('/', (req, res) => {
     console.log('POST USUARIOS');
      return res.send({message: 'POST USUARIO'});
  });
+
+ router.put('/', (req, res) => {
+    console.log('PUT USUARIOS');
+    return res.status(200).send({ message: 'PUT USUARIO' });
+
+});
+
+router.delete('/', (req, res) => {
+   console.log('DELETE USUARIOS');
+    return res.send({message: 'DELETE USUARIO'});
+});
  
  module.exports = router;
 

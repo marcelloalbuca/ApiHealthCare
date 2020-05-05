@@ -13,6 +13,16 @@ router.get('/', (req, res) => {
     console.log('POST ENFERMEIROS');
      return res.send({message: 'POST ENFERMEIRO'});
  });
+
+ router.put('/', (req, res) => {
+    console.log('PUT ENFERMEIROS');
+     return res.send({message: 'PUT ENFERMEIRO'});
+ });
+
+ router.delete('/', (req, res) => {
+    console.log('DELETE ENFERMEIROS');
+     return res.send({message: 'DELETE ENFERMEIRO'});
+ });
  
  module.exports = router;
 
