@@ -7,7 +7,7 @@ const UsuarioSchema = new Schema({
     sexo: {type: String, required: true, unique: true},
     endereco: { type: String, required: true },
     dataNascimento: {type: Date, required: true },
-    cpf: {type: String, required: true, unique: true},
+    cpfUsuario: {type: String, required: true, unique: true},
     email: { type: String, required: true, unique: true, lowercase: true },
     password: { type: String, required: true, select: false },
     telefone: {type: String, required: true, unique: true},
