@@ -1,0 +1,32 @@
+<resources>
+    <!--Definição do Menu gaveta -->
+    <string name="app_name">HealthCare</string>
+    <string name="navigation_drawer_open">Menu aberto</string>
+    <string name="navigation_drawer_close">Menu fechado</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+    <string name="tx_login">Login</string>
+    <string name="tx_or">ou</string>
+    <string name="tx_me_sign_up">Cadastrar</string>
+    <string name="tx_conected_as">Conectado como:</string>
+    <string name="item_all_caregivers">Todos os cuidadores</string>
+    <string name="item_nurses">Enfermeiro</string>
+    <string name="item_caregivers">Cuidadores de Idosos</string>
+    <string name="item_contact">Contato Health Care</string>
+    <string name="item_about">Sobre</string>
+    <string name="item_privacy_policy">Políticas de privacidade</string>
+    <string name="item_my_orders">Meus pedidos</string>
+    <string name="item_settings">Minhas configurações</string>
+    <string name="item_sign_out">Sair</string>
+
+</resources>
+
+
+
+
+
+
+
+
