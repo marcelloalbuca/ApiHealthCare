@@ -1,12 +1,65 @@
-module.exports = class Usuario {
-    constructor(nome, endereco, dataNascimento, cpf, rg, telefone, email, sexo) {
-        this.nome = nome;
-        this.endereco = endereco;
-        this.sexo = sexo;
-        this.cpf = cpf;
-        this.rg = rg;
-        this.telefone = telefone;
-        this.email = email;
-        this.dataNascimento = new Date();
+class UsersController {
+    constructor (User) {
+      this.User = User
     }
+  
+    async findAll (req, res) {
+      try {
+        const users = await this.User.find({})
+        res.send(users)
+      } catch (error) {
+        res.status(400).send(error.message)
+      }
+    }
+
+    async getById (req, res) {
+    const { params: { id } } = req
+
+    try {
+      const user = await this.User.find({ _id: id })
+      res.send(user)
+    } catch (error) {
+      res.status(400).send(error.message)
+    }
+  }
+
+  async create (req, res) {
+    try {
+      const user = new this.User(req.body)
+      await user.save()
+
+      res.status(201).send(user)
+    } catch (error) {
+      res.status(422).send(error.message)
+    }
+  }
+
+  async update (req, res) {
+    const body = req.body
+
+    try {
+      const user = await this.User.findById(req.params.id)
+
+      user.nome = body.nome
+      //user.sexo = body.sexo
+
+      await user.save()
+
+      res.sendStatus(200)
+    } catch (error) {
+      res.status(422).send(error.message)
+    }
+  }
+
+  async delete (req, res) {
+    try {
+      await this.User.deleteOne({ _id: req.params.id })
+      res.sendStatus(200)
+    } catch (error) {
+      res.status(400).send(error.message)
+    }
+  }
+
 }
+
+module.exports = UsersController
