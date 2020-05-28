@@ -6,7 +6,7 @@ class UsersController {
     async findAll (req, res) {
       try {
         const users = await this.User.find({})
-        res.send(users)
+        res.send({ users })
       } catch (error) {
         res.status(400).send(error.message)
       }
