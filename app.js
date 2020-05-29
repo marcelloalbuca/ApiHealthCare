@@ -6,6 +6,7 @@ const bodyParser = require('body-parser');
 const indexRoute = require('./routes/index');
 const userRoute = require('./routes/usuario');
 const enfermeiroRoute = require('./routes/enfermeiro');
+const pedidoRoute = require('./routes/pedido');
 
 //Conexão DB
 const url = config.bd_string;
@@ -33,6 +34,7 @@ app.use(bodyParser.json());
 
 userRoute(app)
 enfermeiroRoute(app)
+pedidoRoute(app)
 app.use('/', indexRoute);
 
 app.listen(3000);
