@@ -80,29 +80,7 @@ const pedidoRoute = (app) => {
 module.exports = pedidoRoute
 
 
-/*
-router.get('/', (req, res) => {
-     console.log('GET ENFERMEIROS');
-     return res.status(200).send({ message: 'GET ENFERMEIRO' });
- 
- });
- 
- router.post('/', (req, res) => {
-    console.log('POST ENFERMEIROS');
-     return res.send({message: 'POST ENFERMEIRO'});
- });
 
- router.put('/', (req, res) => {
-    console.log('PUT ENFERMEIROS');
-     return res.send({message: 'PUT ENFERMEIRO'});
- });
-
- router.delete('/', (req, res) => {
-    console.log('DELETE ENFERMEIROS');
-     return res.send({message: 'DELETE ENFERMEIRO'});
- });
- 
- module.exports = router;
 
 /*
 
