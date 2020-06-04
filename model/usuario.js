@@ -5,6 +5,7 @@ const schema = new Schema({
     nome: { type: String, required: true },
     sexo: {type: String, required: true, unique: true},
     dataNascimento: {type: Date, required: true },
+    telefone: {type: String, required: true, unique: true},
     cpf: {type: String, required: true, unique: true},
     email: {
         type: String,
@@ -12,8 +13,7 @@ const schema = new Schema({
         unique: true,
         match: [/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/, 'Please fill a valid email address'],
     },
-    password: { type: String, required: true, select: false },
-    telefone: {type: String, required: true, unique: true}
+    password: { type: String, required: true, select: false }
 },{
     timestamps: { createdAt: true, updatedAt: true },
     toJSON: { 
