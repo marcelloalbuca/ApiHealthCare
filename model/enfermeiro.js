@@ -6,6 +6,11 @@ const schema = new Schema({
     sexo: {type: String, required: true},
     dataNascimento: {type: Date, required: true },
     cpf: {type: String, required: true, unique: true},
+    telefone: {type: String, required: true, unique: true},
+    coren: {type: String, required: true, unique: true},
+    especialidades: {type: String},
+    restricoes: {type: String},
+    experiencias: {type: String},
     email: {
         type: String,
         required: [true, 'Email is required'],
@@ -13,11 +18,6 @@ const schema = new Schema({
         match: [/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/, 'Please fill a valid email address'],
     },
     password: { type: String, required: true, select: false },
-    telefone: {type: String, required: true, unique: true},
-    coren: {type: String, required: true, unique: true},
-    especialidades: {type: String},
-    restricoes: {type: String},
-    experiencias: {type: String},
 },{
     timestamps: { createdAt: true, updatedAt: true },
     toJSON: { 
