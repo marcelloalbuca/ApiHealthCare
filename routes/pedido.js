@@ -16,7 +16,7 @@ const pedidoRoute = (app) => {
             res.send({ pedido })
             
         } catch (error) {
-            res.status(400).send({ error: 'Failed to find user' })
+            res.status(400).send({ error: 'Falha ao pesquisar pedido' })
         }
     })
     .post(async (req, res) => {
@@ -34,7 +34,7 @@ const pedidoRoute = (app) => {
         const { id } = req.params
 
         if (!id) {
-            return res.status(400).send({ error: 'pedido ID is missing.' })
+            return res.status(400).send({ error: 'Falta ID do pedido' })
         }
 
         try {
@@ -48,7 +48,7 @@ const pedidoRoute = (app) => {
                 return res.status(200).send('OK')
             }
 
-            res.status(400).send({ error: 'Could not update the user' })
+            res.status(400).send({ error: 'Não foi possível atualizar o pedido' })
 
         } catch (error) {
             res.send(error)
@@ -59,7 +59,7 @@ const pedidoRoute = (app) => {
         const { id } = req.params
 
         if (!id) {
-            return res.status(400).send({ error: 'User ID is missing.' })
+            return res.status(400).send({ error: 'ID do pedido não encontrado' })
         }
 
         try {
@@ -69,7 +69,7 @@ const pedidoRoute = (app) => {
                 return res.send('OK')
             }
 
-            res.status(400).send({ error: 'Could not delete the user' })
+            res.status(400).send({ error: 'Não foi possível excluir o pedido' })
 
         } catch (error) {
             res.send(error)
