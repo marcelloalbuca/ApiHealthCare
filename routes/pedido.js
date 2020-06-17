@@ -1,82 +1,26 @@
+const PedidoController = require('../controllers/pedido');
 const PedidoModel = require('../model/pedido');
+
+const pedidoController = new PedidoController(PedidoModel)
 
 const pedidoRoute = (app) => {
 
-    app.route('/pedido/:id?')
-    .get(async (req, res) => {
-        const { id } = req.params
-        const query = {};
+    app.route('/pedido')
+    .get(async (req, res) => pedidoController.findAll(req, res))
 
-        if (id) {
-            query._id = id
-        }
+    app.route('/pedido/:id')
+    .get(async (req, res) => pedidoController.getById(req, res))
+    
+    app.route('/pedido')
+    .post(async (req, res) => pedidoController.create(req, res))
 
-        try {
-            const pedido = await PedidoModel.find(query)
-            res.send({ pedido })
-            
-        } catch (error) {
-            res.status(400).send({ error: 'Falha ao pesquisar pedido' })
-        }
-    })
-    .post(async (req, res) => {
+    app.route('/pedido/:id')
+    .put(async (req, res) => pedidoController.update(req, res))
 
-        try {                //validacao
-            const pedido = new PedidoModel(req.body)
-            await pedido.save()
-
-            res.status(201).send('OK')
-        } catch (error) {
-            res.send(error)   
-        }
-    })
-    .put(async (req, res) => {
-        const { id } = req.params
-
-        if (!id) {
-            return res.status(400).send({ error: 'Falta ID do pedido' })
-        }
-
-        try {
-            const updatedPedido = await PedidoModel.findOneAndUpdate({ _id: id }, req.body, {
-                new: true,
-            });
-
-            console.log(updatedPedido)
-
-            if (updatedPedido) {
-                return res.status(200).send('OK')
-            }
-
-            res.status(400).send({ error: 'Não foi possível atualizar o pedido' })
-
-        } catch (error) {
-            res.send(error)
-        }
-    })
-    .delete(async (req, res) => {
-
-        const { id } = req.params
-
-        if (!id) {
-            return res.status(400).send({ error: 'ID do pedido não encontrado' })
-        }
-
-        try {
-            const deletedPedido = await PedidoModel.deleteOne({ _id: id })
-
-            if (deletedPedido.deletedCount) {
-                return res.send('OK')
-            }
-
-            res.status(400).send({ error: 'Não foi possível excluir o pedido' })
-
-        } catch (error) {
-            res.send(error)
-        }
-    })
+    app.route('/pedido/:id')
+    .delete(async (req, res) => pedidoController.delete(req, res))
 }
-
+ 
 module.exports = pedidoRoute
 
 

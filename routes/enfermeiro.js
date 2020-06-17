@@ -1,82 +1,26 @@
+const EnfermeiroController = require('../controllers/enfermeiro');
 const EnfermeiroModel = require('../model/enfermeiro');
+
+const enfermeiroController = new EnfermeiroController(EnfermeiroModel)
 
 const enfermeiroRoute = (app) => {
 
-    app.route('/enfermeiro/:id?')
-    .get(async (req, res) => {
-        const { id } = req.params
-        const query = {};
+    app.route('/enfermeiro')
+    .get(async (req, res) => enfermeiroController.findAll(req, res))
 
-        if (id) {
-            query._id = id
-        }
+    app.route('/enfermeiro/:id')
+    .get(async (req, res) => enfermeiroController.getById(req, res))
+    
+    app.route('/enfermeiro')
+    .post(async (req, res) => enfermeiroController.create(req, res))
 
-        try {
-            const enfermeiro = await EnfermeiroModel.find(query)
-            res.send({ enfermeiro })
-            
-        } catch (error) {
-            res.status(400).send({ error: 'Falha ao pesquisar enfermeiro' })
-        }
-    })
-    .post(async (req, res) => {
+    app.route('/enfermeiro/:id')
+    .put(async (req, res) => enfermeiroController.update(req, res))
 
-        try {                //validacao
-            const enfermeiro = new EnfermeiroModel(req.body)
-            await enfermeiro.save()
-
-            res.status(201).send('OK')
-        } catch (error) {
-            res.send(error)   
-        }
-    })
-    .put(async (req, res) => {
-        const { id } = req.params
-
-        if (!id) {
-            return res.status(400).send({ error: 'Falta ID do enfermeiro.' })
-        }
-
-        try {
-            const updatedEnfermeiro = await EnfermeiroModel.findOneAndUpdate({ _id: id }, req.body, {
-                new: true,
-            });
-
-            console.log(updatedEnfermeiro)
-
-            if (updatedEnfermeiro) {
-                return res.status(200).send('OK')
-            }
-
-            res.status(400).send({ error: 'Não foi possível atualizar o enfermeiro' })
-
-        } catch (error) {
-            res.send(error)
-        }
-    })
-    .delete(async (req, res) => {
-
-        const { id } = req.params
-
-        if (!id) {
-            return res.status(400).send({ error: 'ID do enfermeiro não encontrado' })
-        }
-
-        try {
-            const deletedEnfermeiro = await EnfermeiroModel.deleteOne({ _id: id })
-
-            if (deletedEnfermeiro.deletedCount) {
-                return res.send('OK')
-            }
-
-            res.status(400).send({ error: 'Não foi possível excluir o enfermeiro' })
-
-        } catch (error) {
-            res.send(error)
-        }
-    })
+    app.route('/enfermeiro/:id')
+    .delete(async (req, res) => enfermeiroController.delete(req, res))
 }
-
+ 
 module.exports = enfermeiroRoute
 
 
