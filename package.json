@@ -18,9 +18,9 @@
   },
   "homepage": "https://github.com/marcelloalbuca/ApiHealthCare#readme",
   "dependencies": {
-    "express": "^4.17.1",
+    "express": "^4.18.2",
     "bcrypt": "^3.0.4",
-    "body-parser": "^1.18.3",
+    "body-parser": "^1.20.1",
     "jsonwebtoken": "^8.5.0",
     "mongoose": "^5.4.17"
   }
